@@ -1,0 +1,50 @@
+.photo-upload-area {
+    width: 343px;
+    height: 343px;
+    border-radius: 34px;
+    border: 2px dashed #BDBDBD;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 46px;
+}
+
+.photo-upload-area__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    width: 288px;
+    height: 192px;
+    justify-content: center;
+}
+
+.photo-upload-area__camera {
+    width: 70px;
+    height: 66px;
+}
+
+.photo-upload-area__title {
+    font-family: 'Bakbak One', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #4B164C;
+    line-height: 130%;
+    text-align: center;
+    margin: 0;
+}
+
+.photo-upload-area__subtitle {
+    font-family: 'Bakbak One', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4B164C;
+    line-height: 130%;
+    text-align: center;
+    margin: 0;
+}

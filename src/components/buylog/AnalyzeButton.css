@@ -1,0 +1,17 @@
+.analyze-button {
+    width: 335px;
+    height: 53px;
+    border-radius: 16px;
+    background-color: #4B164C;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 140%;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 19px;
+}

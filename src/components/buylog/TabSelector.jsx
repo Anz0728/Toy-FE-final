@@ -1,0 +1,25 @@
+import React, { useState } from 'react';
+import './TabSelector.css';
+
+function TabSelector() {
+    const [activeTab, setActiveTab] = useState('album');
+
+    return (
+        <div className="tab-selector">
+            <button
+                className={`tab-selector__btn ${activeTab === 'album' ? 'tab-selector__btn--active' : 'tab-selector__btn--inactive'}`}
+                onClick={() => setActiveTab('album')}
+            >
+                앨범에서 선택
+            </button>
+            <button
+                className={`tab-selector__btn ${activeTab === 'camera' ? 'tab-selector__btn--active' : 'tab-selector__btn--inactive'}`}
+                onClick={() => setActiveTab('camera')}
+            >
+                사진 찍기
+            </button>
+        </div>
+    );
+}
+
+export default TabSelector;

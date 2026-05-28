@@ -1,0 +1,36 @@
+.tab-selector {
+    width: 343px;
+    height: 44px;
+    border-radius: 16px;
+    background-color: #F8E7F6;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 46px;
+    box-sizing: border-box;
+}
+
+.tab-selector__btn {
+    width: 160px;
+    height: 36px;
+    border-radius: 16px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 140%;
+    color: #4B164C;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.tab-selector__btn--active {
+    background-color: white;
+}
+
+.tab-selector__btn--inactive {
+    background-color: #F8E7F6;
+    color: #4B164C;
+}
