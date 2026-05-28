@@ -1,0 +1,20 @@
+.bar-chart {
+    width: 342px;
+}
+
+.bar-chart__weekly-btn {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    border: none;
+    background: #F2F2F2;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    color: #030319;
+    cursor: pointer;
+    margin-bottom: 16px;
+}

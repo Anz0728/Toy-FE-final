@@ -1,0 +1,27 @@
+.emotion-chart__title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    color: #030319;
+    margin: 0 0 16px 0;
+}
+
+.emotion-chart__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.emotion-chart__legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.emotion-chart__legend span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+}

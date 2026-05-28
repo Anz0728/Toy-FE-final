@@ -1,23 +1,25 @@
 import FeedHeader from '../components/feed/FeedHeader'
-// import BottomNavBar from '../components/BottomNavBar'
 import TodayTitle from '../components/feed/TodayTitle'
-import PurchaseCard from '../components/feed/PurchaseCard'
-import testImage from '../assets/Eximg.png'
+import CardGrid from '../components/feed/CardGrid'
+import EmotionChart from '../components/feed/EmotionChart'
+import WeeklyBarChart from '../components/feed/BarChart'
 
 function Feed() {
     return (
         <div>
             <FeedHeader />
-            <TodayTitle total="28,500" />
-            <PurchaseCard
-                imageUrl={testImage}
-                itemName="아이스 아메리카노"
-                category="카페"
-                amount={4500}
-                emotionTag="잘샀다"
-                createdAt="2024-01-01T10:12:00"
-            />
-            {/* <BottomNavBar /> */}
+            <div style={{ marginTop: '16px', marginBottom: '51px' }}>
+                <TodayTitle total="28,500" />
+            </div>
+            <div style={{ padding: '0 16px', width: '343px' }}>
+                <CardGrid />
+            </div>
+            <div style={{ padding: '0 16px', marginTop: '32px' }}>
+                <EmotionChart />
+            </div>
+            <div style={{ padding: '0 16px', marginTop: '16px' }}>
+                <WeeklyBarChart />
+            </div>
         </div>
     )
 }

@@ -1,107 +1,175 @@
 .purchase-card {
+    position: relative;
+
     width: 163px;
     height: 232px;
+
     border-radius: 24px;
+
     background-color: #DD88CF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
 }
 
-.purchase-card__image-wrap {
+/* 가격 배지 */
+.purchase-card__price-badge {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    min-width: 58px;
+    width: fit-content;
+    height: 20px;
+
+    padding: 2px 10px;
+
+    border-radius: 7px;
+
+    background: #DD88CF;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+
+    z-index: 3;
+}
+
+/* 카드 내부 */
+.purchase-card__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: 155px;
     height: 224px;
+
     border-radius: 22px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
 }
 
+/* 이미지 영역 */
+.purchase-card__image-wrap {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 22px;
+    overflow: hidden;
+
+    background-color: #DD88CF;
+}
+
+/* 실제 이미지 */
 .purchase-card__image {
-    width: 164px;
-    height: 245px;
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
     object-fit: cover;
 }
 
-.purchase-card__overlay-image {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 155px;
-    height: 224px;
-    border-radius: 22px;
-}
-
+/* 오버레이 */
 .purchase-card__overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 155px;
-    height: 224px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 8px;
-    gap: 4px;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
 }
 
+/* 텍스트 전체 묶음 */
+.purchase-card__info {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 2;
+}
+
+/* 시간 */
 .purchase-card__time {
+    margin: 0 0 5px 0;
+
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 135%;
-    text-align: center;
+
     color: #FFFFFF;
-    white-space: nowrap;
+
+    text-align: center;
 }
 
+/* 카테고리 */
 .purchase-card__category {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 22px;
-    border-radius: 32px;
+    margin-bottom: 4px;
+
     padding: 4px 8px;
-    background-color: rgba(255, 255, 255, 0.2);
+
+    border-radius: 32px;
+
     border: 1px solid rgba(255, 255, 255, 0.2);
+
+    background: rgba(255, 255, 255, 0.2);
+
     backdrop-filter: blur(24px);
+
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 11px;
-    line-height: 14px;
+
     color: #FFFFFF;
 }
 
+/* 상품명 */
 .purchase-card__name {
+    margin: 0 0 11px 0;
+
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 18px;
     line-height: 135%;
-    text-align: center;
+
     color: #FFFFFF;
+
+    text-align: center;
 }
 
+/* 감정 영역 */
 .purchase-card__emotion {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 1px;
+    gap: 4px;
 }
 
+/* 감정 텍스트 */
 .purchase-card__emotion-text {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 11px;
     line-height: 14px;
-    text-align: center;
-    text-transform: uppercase;
+
     color: rgba(255, 255, 255, 0.7);
 }
 
-.purchase-card__price-badge {
-    display: none;
+/* 감정 아이콘 */
+.purchase-card__emotion-icon {
+    width: 14px;
+    height: 14px;
 }

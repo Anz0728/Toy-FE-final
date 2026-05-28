@@ -1,0 +1,11 @@
+.card-grid {
+    width: 343px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 12px;
+    row-gap: 36px;
+
+    padding-top: 28px;
+}
