@@ -3,22 +3,31 @@ import TodayTitle from '../components/feed/TodayTitle'
 import CardGrid from '../components/feed/CardGrid'
 import EmotionChart from '../components/feed/EmotionChart'
 import WeeklyBarChart from '../components/feed/BarChart'
+import './Feed.css'
 
 function Feed() {
     return (
-        <div>
+        <div className="feed-page" style={{
+            width: '390px',
+            height: '844px',
+            backgroundColor: '#FDF7FD',
+            overflowY: 'auto',
+            overflowX: 'hidden',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+        }}>
             <FeedHeader />
-            <div style={{ marginTop: '16px', marginBottom: '51px' }}>
-                <TodayTitle total="28,500" />
-            </div>
-            <div style={{ padding: '0 16px', width: '343px' }}>
+            <div style={{ padding: '0 24px' }}>
+                <div style={{ marginTop: '16px', marginBottom: '28px' }}>
+                    <TodayTitle total="28,500" />
+                </div>
                 <CardGrid />
-            </div>
-            <div style={{ padding: '0 16px', marginTop: '32px' }}>
-                <EmotionChart />
-            </div>
-            <div style={{ padding: '0 16px', marginTop: '16px' }}>
-                <WeeklyBarChart />
+                <div style={{ marginTop: '57px' }}>
+                    <EmotionChart />
+                </div>
+                <div style={{ marginTop: '16px', paddingBottom: '70px' }}>
+                    <WeeklyBarChart />
+                </div>
             </div>
         </div>
     )

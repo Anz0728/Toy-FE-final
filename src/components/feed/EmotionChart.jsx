@@ -14,15 +14,16 @@ function EmotionChart() {
         <div className="emotion-chart">
             <h2 className="emotion-chart__title">이번 주 감정 비율</h2>
             <div className="emotion-chart__content">
-                <PieChart width={160} height={160}>
+                <PieChart width={139} height={138}>
                     <Pie
                         data={data}
-                        cx={75}
-                        cy={75}
+                        cx={64}
+                        cy={64}
                         innerRadius={50}
-                        outerRadius={75}
+                        outerRadius={62}
                         dataKey="value"
                         strokeWidth={0}
+                        paddingAngle={0}
                     >
                         {data.map((entry, index) => (
                             <Cell key={index} fill={COLORS[index]} />

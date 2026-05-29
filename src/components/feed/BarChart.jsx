@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, ResponsiveContainer } from 'recharts'
 import './BarChart.css'
+import downIcon from '../../assets/down.svg'
 
 const data = [
     { day: 'Mon', bottom: 40, top: 50 },
@@ -38,14 +39,23 @@ const CustomBar = (props) => {
 function WeeklyBarChart() {
     return (
         <div className="bar-chart">
-            <button className="bar-chart__weekly-btn">Weekly ▾</button>
+            <button className="bar-chart__weekly-btn">
+                Weekly
+                <img src={downIcon} alt="down" style={{ width: '16px', height: '16px' }} />
+            </button>
             <ResponsiveContainer width="100%" height={188}>
                 <BarChart
                     data={data}
                     margin={{ top: 20, right: 0, left: 0, bottom: 0 }}
                     barSize={10}
                 >
-                    <XAxis dataKey="day" axisLine={false} tickLine={false} />
+                    <XAxis
+                        dataKey="day"
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fontFamily: 'DM Sans', fontWeight: 400, fontSize: 14, fill: '#8F92A1' }}
+                        dy={8}
+                    />
                     <Bar dataKey="bottom" stackId="a" fill="#B7A0CA" shape={<CustomBar />} />
                     <Bar dataKey="top" stackId="a" fill="#97AFD5" shape={<CustomBar />} />
                 </BarChart>

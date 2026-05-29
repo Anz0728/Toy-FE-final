@@ -10,17 +10,17 @@
 .emotion-chart__content {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 21px;
 }
 
 .emotion-chart__legend {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 19px;
 }
 
 .emotion-chart__legend span {
-    width: 10px;
+    width: 11px;
     height: 10px;
     border-radius: 50%;
     display: block;
