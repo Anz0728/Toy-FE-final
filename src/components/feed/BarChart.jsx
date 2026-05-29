@@ -2,15 +2,7 @@ import { BarChart, Bar, XAxis, ResponsiveContainer } from 'recharts'
 import './BarChart.css'
 import downIcon from '../../assets/down.svg'
 
-const data = [
-    { day: 'Mon', bottom: 40, top: 50 },
-    { day: 'Tue', bottom: 50, top: 40 },
-    { day: 'Wed', bottom: 30, top: 60 },
-    { day: 'Thu', bottom: 80, top: 10 },
-    { day: 'Fri', bottom: 40, top: 50 },
-    { day: 'Sat', bottom: 65, top: 25 },
-    { day: 'Sun', bottom: 55, top: 35 },
-]
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 const CustomBar = (props) => {
     const { x, y, width, height, fill } = props
@@ -36,7 +28,11 @@ const CustomBar = (props) => {
     )
 }
 
-function WeeklyBarChart() {
+function WeeklyBarChart({ report }) {
+    const data = report
+        ? DAYS.map(day => ({ day, bottom: 40, top: 50 }))
+        : DAYS.map(day => ({ day, bottom: 40, top: 50 }))
+
     return (
         <div className="bar-chart">
             <button className="bar-chart__weekly-btn">

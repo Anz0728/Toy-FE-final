@@ -1,11 +1,28 @@
+import { useEffect, useState } from 'react'
 import FeedHeader from '../components/feed/FeedHeader'
 import TodayTitle from '../components/feed/TodayTitle'
 import CardGrid from '../components/feed/CardGrid'
 import EmotionChart from '../components/feed/EmotionChart'
 import WeeklyBarChart from '../components/feed/BarChart'
+import { fetchWithGuest } from '../utils/api'
 import './Feed.css'
 
 function Feed() {
+    const [totalAmount, setTotalAmount] = useState(0)
+    const [report, setReport] = useState(null)
+
+    useEffect(() => {
+        fetchWithGuest('http://localhost:8080/api/spendings/todays')
+            .then(res => res.json())
+            .then(data => {
+                setTotalAmount(data.totalAmount)
+            })
+
+        fetchWithGuest('http://localhost:8080/api/report')
+            .then(res => res.json())
+            .then(data => setReport(data))
+    }, [])
+
     return (
         <div className="feed-page" style={{
             width: '390px',
@@ -19,14 +36,14 @@ function Feed() {
             <FeedHeader />
             <div style={{ padding: '0 24px' }}>
                 <div style={{ marginTop: '16px', marginBottom: '28px' }}>
-                    <TodayTitle total="28,500" />
+                    <TodayTitle total={totalAmount.toLocaleString()} />
                 </div>
                 <CardGrid />
                 <div style={{ marginTop: '57px' }}>
-                    <EmotionChart />
+                    <EmotionChart report={report} />
                 </div>
-                <div style={{ marginTop: '16px', paddingBottom: '70px' }}>
-                    <WeeklyBarChart />
+                <div style={{ marginTop: '32px', paddingBottom: '70px' }}>
+                    <WeeklyBarChart report={report} />
                 </div>
             </div>
         </div>

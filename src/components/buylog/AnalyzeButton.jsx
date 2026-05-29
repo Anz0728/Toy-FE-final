@@ -1,9 +1,9 @@
 import React from 'react';
 import './AnalyzeButton.css';
 
-function AnalyzeButton() {
+function AnalyzeButton({ onClick }) {
     return (
-        <button className="analyze-button">
+        <button className="analyze-button" onClick={onClick}>
             AI 분석하기
         </button>
     );
