@@ -15,7 +15,7 @@ import svg16 from "../assets/16.svg";
 import svg17 from "../assets/17.svg";
 import svg133 from "../assets/133.svg";
 import { useNavigate } from "react-router-dom";
-
+import './Home.css'
 
 function Home() {
   const navigate = useNavigate();

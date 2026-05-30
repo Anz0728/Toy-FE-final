@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import './Record.css'
 function Record() {
   const navigate = useNavigate();
   const [step, setStep] = useState("upload");

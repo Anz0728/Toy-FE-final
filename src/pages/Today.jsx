@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+import './Today.css'
+ 
 function Today() {
   const spendings = JSON.parse(localStorage.getItem("spendings") || "[]");
   const total = spendings.reduce((sum, item) => sum + item.amount, 0);

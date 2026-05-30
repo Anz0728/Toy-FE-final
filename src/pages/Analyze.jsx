@@ -1,6 +1,7 @@
 import { ChevronLeft } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Analyze.css"
 
 function Analyze() {
   const navigate = useNavigate();

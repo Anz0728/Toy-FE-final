@@ -1,3 +1,4 @@
+import './Result.css'
 import { useState } from "react";
 import { ChevronLeft, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
