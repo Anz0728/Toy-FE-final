@@ -1,18 +1,20 @@
 import { ChevronLeft } from "lucide-react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Analyze.css"
 
 function Analyze() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { result, imageUrl } = location.state || {};
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/result");
+      navigate("/result", { state: { result, imageUrl } });
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, [navigate, result, imageUrl]);
 
   return (
     <div className="phone-frame analyze-page">

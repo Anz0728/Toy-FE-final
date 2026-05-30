@@ -2,15 +2,21 @@ import { useEffect, useState } from 'react'
 import './CardGrid.css'
 import PurchaseCard from './PurchaseCard'
 import AddCard from './AddCard'
-import { fetchWithGuest } from '../../utils/api'
+import { api } from '../../utils/api'
 
 function CardGrid() {
     const [spendings, setSpendings] = useState([])
 
     useEffect(() => {
-        fetchWithGuest('https://fe-be-api.com/api/spendings/todays')
-            .then(res => res.json())
-            .then(data => setSpendings(data.data.spendings))
+        const loadSpendings = async () => {
+            try {
+                const data = await api.getTodaysSpendings();
+                setSpendings(data.spendings);
+            } catch (e) {
+                console.error('Failed to load spendings', e);
+            }
+        };
+        loadSpendings();
     }, [])
 
     return (

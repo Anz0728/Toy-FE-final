@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import Analyze from './pages/Analyze'
 import Result from './pages/Result'
+import Report from './pages/Report'
 import BottomNavBar from './components/BottomNavBar'
 import './App.css'
 
@@ -21,6 +22,7 @@ function Layout() {
         <Route path="/home" element={<Home />} />
         <Route path="/analyze" element={<Analyze />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/report" element={<Report />} />
       </Routes>
       {!hideNav && <BottomNavBar />}
     </div>

@@ -11,11 +11,11 @@ function BottomNavBar() {
 
     return (
         <nav className="bottom-nav-bar">
-            <img src={HomeIcon} width={62} height={48} className="bottom-nav-bar__icon" onClick={() => navigate('/')} />
+            <img src={HomeIcon} width={62} height={48} className="bottom-nav-bar__icon" onClick={() => navigate('/home')} />
             <img src={IconIcon} width={24} height={24} className="bottom-nav-bar__icon" onClick={() => navigate('/feed')} />
             <img src={AddIcon} width={62} height={48} className="bottom-nav-bar__icon" onClick={() => navigate('/buylog')} />
-            <img src={CalendarIcon} width={24} height={24} />
-            <img src={MatchesIcon} width={62} height={48} />
+            <img src={CalendarIcon} width={24} height={24} className="bottom-nav-bar__icon" onClick={() => navigate('/feed')} />
+            <img src={MatchesIcon} width={62} height={48} className="bottom-nav-bar__icon" onClick={() => navigate('/report')} />
         </nav>
     )
 }

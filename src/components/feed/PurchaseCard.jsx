@@ -2,6 +2,7 @@ import './PurchaseCard.css'
 import overlayImage from '../../assets/overlay.svg'
 import smileIcon from '../../assets/boxicons_smile.svg'
 import frownIcon from '../../assets/frown.svg'
+import { BASE_URL } from '../../utils/api'
 
 const emotionIcons = {
     '잘 샀다': smileIcon,
@@ -20,6 +21,7 @@ function PurchaseCard({ amount, imageUrl, itemName, category, emotionTag, create
         : ''
 
     const emotionIcon = emotionIcons[emotionTag] || smileIcon
+    const fullImageUrl = imageUrl?.startsWith('http') ? imageUrl : `${BASE_URL}${imageUrl}`
 
     return (
         <div className="purchase-card">
@@ -30,7 +32,7 @@ function PurchaseCard({ amount, imageUrl, itemName, category, emotionTag, create
             <div className="purchase-card__inner">
                 <div className="purchase-card__image-wrap">
 
-                    <img src={imageUrl} alt="" className="purchase-card__image" />
+                    <img src={fullImageUrl} alt="" className="purchase-card__image" />
                     <img src={overlayImage} alt="" className="purchase-card__overlay" />
 
                     <div className="purchase-card__info">
