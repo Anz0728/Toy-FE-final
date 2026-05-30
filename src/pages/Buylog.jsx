@@ -6,6 +6,7 @@ import PhotoUploadArea from '../components/buylog/PhotoUploadArea'
 import TabSelector from '../components/buylog/TabSelector'
 import AnalyzeButton from '../components/buylog/AnalyzeButton'
 import { getGuestId } from '../utils/api'
+import './Buylog.css'
 
 function Buylog() {
     const [image, setImage] = useState(null)
@@ -70,7 +71,7 @@ function Buylog() {
     }
 
     return (
-        <div style={{ width: '390px', backgroundColor: '#FDF7FD', margin: '0 auto', paddingBottom: '180px' }}>
+        <div className="buylog-page">
             <BuylogHeader />
             <TipBox />
             <PhotoUploadArea

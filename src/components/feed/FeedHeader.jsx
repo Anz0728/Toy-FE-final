@@ -1,7 +1,7 @@
-import './FeedHeader.css'
+import { useNavigate } from 'react-router-dom'
 import BackIcon from '../../assets/Back.svg'
 import FilterIcon from '../../assets/Setting.svg'
-import { useNavigate } from 'react-router-dom'
+import './FeedHeader.css'
 
 function FeedHeader() {
     const navigate = useNavigate()

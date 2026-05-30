@@ -28,9 +28,9 @@ function EmotionChart({ report }) {
                     </Pie>
                 </PieChart>
                 <div className="emotion-chart__legend">
-                    <span style={{ background: '#EFCE77' }} />
-                    <span style={{ background: '#A3C690' }} />
-                    <span style={{ background: '#E79EA2' }} />
+                    <span className="emotion-chart__legend-item--yellow" />
+                    <span className="emotion-chart__legend-item--green" />
+                    <span className="emotion-chart__legend-item--pink" />
                 </div>
             </div>
         </div>

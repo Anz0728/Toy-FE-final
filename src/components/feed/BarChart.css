@@ -17,3 +17,8 @@
     color: #030319;
     cursor: pointer;
 }
+
+.bar-chart__down-icon {
+    width: 16px;
+    height: 16px;
+}

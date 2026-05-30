@@ -22,25 +22,17 @@ function Feed() {
     }, [])
 
     return (
-        <div className="feed-page" style={{
-            width: '390px',
-            height: '844px',
-            backgroundColor: '#FDF7FD',
-            overflowY: 'auto',
-            overflowX: 'hidden',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-        }}>
+        <div className="feed-page">
             <FeedHeader />
-            <div style={{ padding: '0 24px' }}>
-                <div style={{ marginTop: '16px', marginBottom: '28px' }}>
+            <div className="feed-page__inner">
+                <div className="feed-page__today">
                     <TodayTitle total={totalAmount.toLocaleString()} />
                 </div>
                 <CardGrid />
-                <div style={{ marginTop: '57px' }}>
+                <div className="feed-page__emotion">
                     <EmotionChart report={report} />
                 </div>
-                <div style={{ marginTop: '32px', paddingBottom: '70px' }}>
+                <div className="feed-page__barchart">
                     <WeeklyBarChart report={report} />
                 </div>
             </div>

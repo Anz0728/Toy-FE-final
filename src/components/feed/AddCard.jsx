@@ -1,23 +1,20 @@
-import './PurchaseCard.css'
+import { useNavigate } from 'react-router-dom'
 import overlayImage from '../../assets/overlay.svg'
 import crossIcon from '../../assets/cross.svg'
-import { useNavigate } from 'react-router-dom'
+import './PurchaseCard.css'
+import './AddCard.css'
 
 function AddCard() {
     const navigate = useNavigate()
 
     return (
-        <div className="purchase-card" onClick={() => navigate('/buylog')} style={{ cursor: 'pointer' }}>
-            <div className="purchase-card__price-badge" style={{ visibility: 'visible' }}>
+        <div className="purchase-card add-card" onClick={() => navigate('/buylog')}>
+            <div className="purchase-card__price-badge">
             </div>
             <div className="purchase-card__inner">
-                <div className="purchase-card__image-wrap" style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}>
+                <div className="purchase-card__image-wrap add-card__image-wrap">
                     <img src={overlayImage} alt="" className="purchase-card__overlay" />
-                    <img src={crossIcon} alt="추가" style={{ position: 'relative', zIndex: 2, width: '26px', height: '26px' }} />
+                    <img src={crossIcon} alt="추가" className="add-card__cross-icon" />
                 </div>
             </div>
         </div>

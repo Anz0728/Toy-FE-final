@@ -1,7 +1,6 @@
-import React from 'react';
-import './BuylogHeader.css';
 import CircleIcon from '../../assets/Circle.svg';
 import SettingIcon from '../../assets/Setting2.svg';
+import './BuylogHeader.css';
 
 function BuylogHeader() {
     return (

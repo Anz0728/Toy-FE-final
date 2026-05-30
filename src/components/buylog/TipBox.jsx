@@ -1,4 +1,3 @@
-import React from 'react';
 import './TipBox.css';
 
 function TipBox() {

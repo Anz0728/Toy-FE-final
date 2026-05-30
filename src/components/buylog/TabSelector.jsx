@@ -1,4 +1,3 @@
-import React from 'react';
 import './TabSelector.css';
 
 function TabSelector({ activeTab, onTabChange }) {

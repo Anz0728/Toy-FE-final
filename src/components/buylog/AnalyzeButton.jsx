@@ -1,4 +1,3 @@
-import React from 'react';
 import './AnalyzeButton.css';
 
 function AnalyzeButton({ onClick }) {

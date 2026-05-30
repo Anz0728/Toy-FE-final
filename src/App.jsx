@@ -3,18 +3,14 @@ import Feed from './pages/Feed'
 import Buylog from './pages/Buylog'
 import Login from './pages/Login'
 import BottomNavBar from './components/BottomNavBar'
+import './App.css'
 
 function Layout() {
   const location = useLocation()
   const hideNav = location.pathname === '/'
 
   return (
-    <div style={{
-      width: '390px',
-      margin: '0 auto',
-      position: 'relative',
-      minHeight: '844px',
-    }}>
+    <div className="app-layout">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/feed" element={<Feed />} />

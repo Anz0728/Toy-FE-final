@@ -1,0 +1,20 @@
+.bottom-nav-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    border-radius: 40px;
+    height: 64px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 8px 0px 40px rgba(117, 34, 119, 0.15);
+    width: 327px;
+    padding: 8px;
+}
+
+.bottom-nav-bar__icon {
+    cursor: pointer;
+}

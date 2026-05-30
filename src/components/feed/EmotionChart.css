@@ -25,3 +25,15 @@
     border-radius: 50%;
     display: block;
 }
+
+.emotion-chart__legend-item--yellow {
+    background: #EFCE77;
+}
+
+.emotion-chart__legend-item--green {
+    background: #A3C690;
+}
+
+.emotion-chart__legend-item--pink {
+    background: #E79EA2;
+}

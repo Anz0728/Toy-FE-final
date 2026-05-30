@@ -1,0 +1,16 @@
+.add-card {
+    cursor: pointer;
+}
+
+.add-card__image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-card__cross-icon {
+    position: relative;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+}

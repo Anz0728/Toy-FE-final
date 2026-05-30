@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import './PhotoUploadArea.css';
+import { useRef } from 'react';
 import CameraIcon from '../../assets/cameraIcon.svg';
+import './PhotoUploadArea.css';
 
 function PhotoUploadArea({ onImageSelect, preview, activeTab }) {
     const fileInputRef = useRef(null)
@@ -26,11 +26,11 @@ function PhotoUploadArea({ onImageSelect, preview, activeTab }) {
                 accept="image/*"
                 ref={fileInputRef}
                 onChange={handleChange}
-                style={{ display: 'none' }}
+                className="photo-upload-area__file-input"
             />
             <div className="photo-upload-area__inner">
                 {preview ? (
-                    <img src={preview} alt="미리보기" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '34px' }} />
+                    <img src={preview} alt="미리보기" className="photo-upload-area__preview" />
                 ) : (
                     <>
                         <img src={CameraIcon} alt="카메라" className="photo-upload-area__camera" />
