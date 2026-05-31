@@ -102,22 +102,8 @@ function Result() {
     : `${BASE_URL}${imageUrl}`;
 
   return (
-    <div
-      className="phone-frame result-page"
-      onMouseMove={(e) => handleDragMove(e.clientY)}
-      onMouseUp={handleDragEnd}
-      onMouseLeave={handleDragEnd}
-      onTouchMove={(e) => handleDragMove(e.touches[0].clientY)}
-      onTouchEnd={handleDragEnd}
-    >
-      <div
-        className="result-bg"
-        style={{ backgroundImage: `url(${fullImageUrl})` }}
-      ></div>
-
-      <div className="result-overlay"></div>
-
-      <div className="top-bar result-top">
+    <div className="phone-frame result-page scrollable">
+      <div className="top-bar result-top fixed">
         <span className="top-time">9:41</span>
         <div className="top-icons">
           <span>●●●</span>
@@ -126,111 +112,95 @@ function Result() {
         </div>
       </div>
 
-      <button className="result-back" onClick={() => navigate("/buylog")}>
+      <button className="result-back fixed" onClick={() => navigate("/buylog")}>
         <ChevronLeft size={24} />
       </button>
 
-      <div className="location-pill">
-        <MapPin size={16} />
-        {purchaseDate}
-      </div>
-
-      <div className="result-info">
-        <input 
-            className="product-input" 
-            value={itemName} 
-            onChange={(e) => setItemName(e.target.value)} 
-            placeholder="상품명 입력" 
-        />
-        <input 
-            className="category-input" 
-            value={category} 
-            onChange={(e) => setCategory(e.target.value)} 
-            placeholder="카테고리 입력" 
-        />
-
-        <div className="price-box">
-          <div className="percent-circle">{result.aiConfidence}%</div>
-          <input 
-            className="price-input" 
-            value={amount} 
-            onChange={(e) => setAmount(e.target.value)} 
-            placeholder="금액 입력" 
-          />
+      <div className="result-scroll-content">
+        <div className="result-analysis-section">
+          <div
+            className="result-main-image"
+            style={{ backgroundImage: `url(${fullImageUrl})` }}
+          >
+            <div className="result-overlay-gradient"></div>
+            <div className="location-pill-inline">
+              <MapPin size={16} />
+              {purchaseDate}
+            </div>
+            
+            <div className="analysis-card-float">
+                <input 
+                    className="product-input" 
+                    value={itemName} 
+                    onChange={(e) => setItemName(e.target.value)} 
+                    placeholder="상품명 입력" 
+                />
+                <input 
+                    className="category-input" 
+                    value={category} 
+                    onChange={(e) => setCategory(e.target.value)} 
+                    placeholder="카테고리 입력" 
+                />
+                <div className="price-box-inline">
+                    <div className="percent-circle-small">{result.aiConfidence}%</div>
+                    <input 
+                        className="price-input-small" 
+                        value={amount} 
+                        onChange={(e) => setAmount(e.target.value)} 
+                        placeholder="금액 입력" 
+                    />
+                </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div
-        className="bottom-sheet"
-        style={{
-          transform: `translateY(${sheetY}px)`,
-          transition: isDragging ? "none" : "transform 0.25s ease",
-        }}
-      >
-        <div
-          className="sheet-handle"
-          onMouseDown={(e) => handleDragStart(e.clientY)}
-          onTouchStart={(e) => handleDragStart(e.touches[0].clientY)}
-        ></div>
+        <div className="result-form-section">
+          <div className="form-group">
+            <label className="section-label">소비 만족도</label>
+            <div className="satisfaction-row">
+                {satisfactions.map((s) => (
+                    <button
+                        key={s}
+                        className={`satisfaction-item ${satisfactionLevel === s ? 'active' : ''}`}
+                        onClick={() => setSatisfactionLevel(s)}
+                    >
+                        {s}
+                    </button>
+                ))}
+            </div>
+          </div>
 
-        <div className="bottom-sheet-content">
-          <label className="sheet-label">만족도</label>
-          <div className="satisfaction-buttons" style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
-            {satisfactions.map((s) => (
+          <div className="form-group">
+            <label className="section-label">한 줄 다이어리</label>
+            <textarea
+                className="diary-textarea"
+                value={memo}
+                onChange={(e) => setMemo(e.target.value)}
+                placeholder="오늘의 소비는 어땠나요?"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="section-label">오늘의 감정</label>
+            <div className="emotion-grid">
+                {emotions.map((emotion) => (
                 <button
-                    key={s}
-                    className={`satisfaction-button ${satisfactionLevel === s ? 'selected' : ''}`}
-                    onClick={() => setSatisfactionLevel(s)}
-                    style={{
-                        padding: '8px 16px',
-                        borderRadius: '20px',
-                        border: '1px solid #ddd',
-                        backgroundColor: satisfactionLevel === s ? '#000' : '#fff',
-                        color: satisfactionLevel === s ? '#fff' : '#000',
-                    }}
+                    key={emotion.value}
+                    type="button"
+                    className={`emotion-item ${emotionTag === emotion.value ? "active" : ""}`}
+                    onClick={() => setEmotionTag(emotion.value)}
                 >
-                    {s}
+                    {emotion.label}
                 </button>
-            ))}
+                ))}
+            </div>
           </div>
 
-          <label className="sheet-label">한 줄 다이어리</label>
-          <textarea
-            className="diary-input"
-            value={memo}
-            onChange={(e) => setMemo(e.target.value)}
-            placeholder="소비에 대한 생각을 적어주세요"
-          />
-
-          <p className="emotion-title">오늘의 감정은?</p>
-          <div className="emotion-buttons">
-            {emotions.map((emotion) => (
-              <button
-                key={emotion.value}
-                type="button"
-                className={
-                  emotionTag === emotion.value
-                    ? "emotion-button selected"
-                    : "emotion-button"
-                }
-                onClick={() => setEmotionTag(emotion.value)}
-              >
-                {emotion.label}
-              </button>
-            ))}
-          </div>
-
-          <button className="save-button" onClick={handleSave} style={{
-              width: '100%',
-              padding: '16px',
-              backgroundColor: '#000',
-              color: '#fff',
-              borderRadius: '12px',
-              marginTop: '20px',
-              fontWeight: 'bold'
-          }}>
-            저장하기
+          <button className="final-save-button" onClick={handleSave}>
+            소비 기록 완료하기
           </button>
+          
+          <div className="bottom-spacing" />
         </div>
       </div>
     </div>
