@@ -1,9 +1,18 @@
 import './Diary.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../utils/api";
 
 function Diary() {
-  const spendings = JSON.parse(localStorage.getItem("spendings") || "[]");
+  const [spendings, setSpendings] = useState([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await api.getSpendings();
+      setSpendings(data);
+    };
+    loadData();
+  }, []);
 
   const [selectedEmotion, setSelectedEmotion] = useState("");
   const [sheetY, setSheetY] = useState(0);

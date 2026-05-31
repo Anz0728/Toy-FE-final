@@ -52,8 +52,17 @@ function Result() {
       };
 
       await api.saveSpending(spendingData);
-      alert("소비 기록이 저장되었습니다!");
-      navigate("/home");
+      
+      // Automatically "Save to Album" (Download)
+      const downloadLink = document.createElement('a');
+      downloadLink.href = fullImageUrl;
+      downloadLink.download = `buylog_${new Date().getTime()}.png`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      alert("소비 기록이 저장되고 앨범에 저장되었습니다!");
+      navigate("/feed"); // Navigate to Feed (the "Album" view)
     } catch (e) {
       alert(e.message || "저장에 실패했습니다.");
     }
@@ -69,7 +78,7 @@ function Result() {
     if (!isDragging) return;
     const diff = clientY - startY;
     const nextY = startSheetY + diff;
-    if (nextY <= 0 && nextY >= -360) {
+    if (nextY <= 0 && nextY >= -480) { // Increased pull-up limit
       setSheetY(nextY);
     }
   };
@@ -77,8 +86,8 @@ function Result() {
   const handleDragEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    if (sheetY < -180) {
-      setSheetY(-360);
+    if (sheetY < -240) { // Adjusted snapping point
+      setSheetY(-480);
     } else {
       setSheetY(0);
     }
@@ -88,7 +97,9 @@ function Result() {
     return <div>데이터를 불러올 수 없습니다.</div>;
   }
 
-  const fullImageUrl = imageUrl?.startsWith('http') ? imageUrl : `${BASE_URL}${imageUrl}`;
+  const fullImageUrl = (imageUrl?.startsWith('http') || imageUrl?.startsWith('blob:')) 
+    ? imageUrl 
+    : `${BASE_URL}${imageUrl}`;
 
   return (
     <div

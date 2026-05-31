@@ -21,7 +21,9 @@ function PurchaseCard({ amount, imageUrl, itemName, category, emotionTag, create
         : ''
 
     const emotionIcon = emotionIcons[emotionTag] || smileIcon
-    const fullImageUrl = imageUrl?.startsWith('http') ? imageUrl : `${BASE_URL}${imageUrl}`
+    const fullImageUrl = (imageUrl?.startsWith('http') || imageUrl?.startsWith('blob:')) 
+        ? imageUrl 
+        : `${BASE_URL}${imageUrl}`
 
     return (
         <div className="purchase-card">
