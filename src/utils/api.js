@@ -17,73 +17,58 @@ const fetchWithGuest = async (endpoint, options = {}) => {
         headers['Content-Type'] = 'application/json';
     }
 
-    try {
-        const response = await fetch(url, {
-            ...options,
-            headers,
-        });
+    const response = await fetch(url, {
+        ...options,
+        headers,
+    });
 
-        if (!response.ok) throw new Error('Network response was not ok');
-        const result = await response.json();
-        return result.data;
-    } catch (error) {
-        console.warn(`API call failed for ${endpoint}, using localStorage fallback:`, error);
-        throw error; // Rethrow to let the caller handle it or use fallback
+    const result = await response.json();
+    
+    // ApiResponse structure: { success: boolean, data: T, error: { code: string, message: string } }
+    if (!result.success) {
+        throw new Error(result.error?.message || 'API 요청에 실패했습니다.');
     }
+    
+    return result.data;
 }
 
-// Helper for local storage persistence
+// Helper for local storage persistence (fallback for list/save actions if needed)
 const getLocalSpendings = () => JSON.parse(localStorage.getItem('spendings') || '[]');
 const saveLocalSpendings = (spendings) => localStorage.setItem('spendings', JSON.stringify(spendings));
 
 export const api = {
+    // 2.1 Image Upload
     uploadImage: async (file) => {
-        try {
-            const formData = new FormData();
-            formData.append('file', file);
-            
-            const response = await fetch(`${BASE_URL}/api/images/upload`, {
-                method: 'POST',
-                body: formData,
-            });
-            const result = await response.json();
-            return result.data;
-        } catch (e) {
-            // Mock upload for demo
-            return { imageUrl: URL.createObjectURL(file) };
-        }
+        const formData = new FormData();
+        formData.append('image', file); // Aligning key name with backend expectation
+        
+        return await fetchWithGuest('/api/images/upload', {
+            method: 'POST',
+            body: formData,
+        });
     },
 
+    // 2.2 AI Consumption Analysis
     analyzeHome: async (imageFile, imageUrl) => {
-        try {
-            const formData = new FormData();
-            formData.append('image', imageFile);
-            formData.append('imageUrl', imageUrl);
-            return await fetchWithGuest('/api/home', {
-                method: 'POST',
-                body: formData,
-            });
-        } catch (e) {
-            // Mock analysis for demo
-            return {
-                itemName: "분석된 상품",
-                category: "기타",
-                amount: 10000,
-                aiConfidence: 95,
-                recommendedEmotion: "🌿 잘 샀다"
-            };
-        }
+        const formData = new FormData();
+        formData.append('image', imageFile); // @RequestPart("image")
+        formData.append('imageUrl', imageUrl); // @RequestParam("imageUrl")
+        
+        return await fetchWithGuest('/api/home', {
+            method: 'POST',
+            body: formData,
+        });
     },
 
+    // 2.3 Save Spending Record
     saveSpending: async (spendingData) => {
         try {
-            const result = await fetchWithGuest('/api/spendings', {
+            return await fetchWithGuest('/api/spendings', {
                 method: 'POST',
                 body: JSON.stringify(spendingData),
             });
-            return result;
         } catch (e) {
-            // Fallback to local storage
+            // Fallback for offline/demo mode
             const spendings = getLocalSpendings();
             const newItem = {
                 id: Date.now(),
@@ -134,11 +119,10 @@ export const api = {
         try {
             return await fetchWithGuest('/api/report');
         } catch (e) {
-            // Mock report data
             return {
-                totalSpent: 150000,
-                mostSpentCategory: "식비",
-                emotionDistribution: { "잘 샀다": 5, "기분전환": 2 }
+                totalSpent: 0,
+                mostSpentCategory: "없음",
+                emotionDistribution: {}
             };
         }
     },
