@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:8080'; // Change to your actual backend URL
+export const BASE_URL = 'https://fe-be-api.com';
 
 export const getGuestId = () => {
     return localStorage.getItem('guestId') || 'testUser001';
