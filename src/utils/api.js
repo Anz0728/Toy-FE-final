@@ -37,10 +37,10 @@ const getLocalSpendings = () => JSON.parse(localStorage.getItem('spendings') || 
 const saveLocalSpendings = (spendings) => localStorage.setItem('spendings', JSON.stringify(spendings));
 
 export const api = {
-    // 2.1 Image Upload
+    // 2.1 Image Upload (ImageController: @RequestParam("file"))
     uploadImage: async (file) => {
         const formData = new FormData();
-        formData.append('image', file); // Aligning key name with backend expectation
+        formData.append('file', file); // Align with @RequestParam("file")
         
         return await fetchWithGuest('/api/images/upload', {
             method: 'POST',
@@ -48,7 +48,7 @@ export const api = {
         });
     },
 
-    // 2.2 AI Consumption Analysis
+    // 2.2 AI Consumption Analysis (HomeController: @RequestPart("image"), @RequestParam("imageUrl"))
     analyzeHome: async (imageFile, imageUrl) => {
         const formData = new FormData();
         formData.append('image', imageFile); // @RequestPart("image")
