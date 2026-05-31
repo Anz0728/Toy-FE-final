@@ -51,20 +51,27 @@ function Result() {
         aiConfidence: result?.aiConfidence || 0
       };
 
+      // 1. 서버에 데이터 저장
       await api.saveSpending(spendingData);
       
-      // Automatically "Save to Album" (Download)
-      const downloadLink = document.createElement('a');
-      downloadLink.href = fullImageUrl;
-      downloadLink.download = `buylog_${new Date().getTime()}.png`;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
+      // 2. 앨범(이미지) 다운로드 시도 (브라우저 정책에 따라 작동)
+      const link = document.createElement('a');
+      link.href = fullImageUrl;
+      link.target = '_blank';
+      link.download = `buylog_${new Date().getTime()}.png`;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => document.body.removeChild(link), 100);
 
-      alert("소비 기록이 저장되고 앨범에 저장되었습니다!");
-      navigate("/feed"); // Navigate to Feed (the "Album" view)
+      // 3. 페이지 이동 (홈 또는 앨범 화면)
+      // 사용자 경험을 위해 alert 이후 바로 이동하도록 처리
+      alert("소비 기록이 저장되었습니다! 앨범(피드)으로 이동합니다.");
+      navigate("/feed"); 
+      
     } catch (e) {
-      alert(e.message || "저장에 실패했습니다.");
+      console.error(e);
+      alert("저장 중 오류가 발생했습니다: " + e.message);
     }
   };
 
